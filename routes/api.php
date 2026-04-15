@@ -17,4 +17,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+}); 
+
+Route::get('/products', function () {
+    return [
+        ['nama' => 'Barang A', 'stok' => 10],
+        ['nama' => 'Barang B', 'stok' => 5],
+    ];
+});
+
+Route::get('/test', function () {
+    return response()->json([
+        'message' => 'API berhasil jalan'
+    ]);
 });
