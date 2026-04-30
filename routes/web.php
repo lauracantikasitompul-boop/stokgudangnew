@@ -17,9 +17,10 @@ Route::get('/app', function () {
     return view('app');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+// Product Routes
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
-// Gunakan controller untuk product (hapus yang view langsung)
-Route::get('/product', [ProductController::class, 'index']);
+// Contact Routes
+Route::get('/contact', [ProductController::class, 'contact'])->name('contact');
+Route::post('/contact', [ProductController::class, 'storeContact'])->name('contacts.store');

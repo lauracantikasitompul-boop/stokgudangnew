@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'My App')</title>
 </head>
-<body>
+<body> 
     <h1>List Produk</h1>
 
     <div class="container">

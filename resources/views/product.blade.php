@@ -24,16 +24,22 @@
                 </tr>
             </thead>
             <tbody class="bg-white">
+                @forelse($products as $product)
                 <tr class="border-b">
-                    <td class="px-6 py-4">1</td>
-                    <td class="px-6 py-4">Mouse</td>
-                    <td class="px-6 py-4">Aksesoris</td>
-                    <td class="px-6 py-4">50</td>
+                    <td class="px-6 py-4">{{ $loop->iteration }}</td>
+                    <td class="px-6 py-4">{{ $product->nama }}</td>
+                    <td class="px-6 py-4">{{ $product->kategori }}</td>
+                    <td class="px-6 py-4">{{ $product->stok }}</td>
                     <td class="px-6 py-4">
                         <button class="text-blue-500">Edit</button> |
                         <button class="text-red-500">Hapus</button>
                     </td>
                 </tr>
+                @empty
+                <tr>
+                    <td colspan="5" class="text-center py-4">Belum ada data</td>
+                </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
@@ -47,20 +53,22 @@
     <div class="bg-white rounded-lg shadow w-full max-w-md p-6">
         <h2 class="text-xl font-semibold mb-4">Tambah Produk</h2>
 
-        <form>
+        <form action="{{ route('products.store') }}" method="POST">
+            @csrf
+
             <div class="mb-3">
                 <label class="block mb-1">Nama Barang</label>
-                <input type="text" class="w-full border rounded p-2">
+                <input type="text" name="nama" class="w-full border rounded p-2">
             </div>
 
             <div class="mb-3">
                 <label class="block mb-1">Kategori</label>
-                <input type="text" class="w-full border rounded p-2">
+                <input type="text" name="kategori" class="w-full border rounded p-2">
             </div>
 
             <div class="mb-3">
                 <label class="block mb-1">Stok</label>
-                <input type="number" class="w-full border rounded p-2">
+                <input type="number" name="stok" class="w-full border rounded p-2">
             </div>
 
             <div class="flex justify-end gap-2">
@@ -68,11 +76,11 @@
                     class="bg-gray-400 text-white px-3 py-2 rounded">
                     Batal
                 </button>
-                <button class="bg-blue-600 text-white px-3 py-2 rounded">
+                <button type="submit" class="bg-blue-600 text-white px-3 py-2 rounded">
                     Simpan
                 </button>
             </div>
         </form>
     </div>
 </div>
-@endsection
+@endsection 
