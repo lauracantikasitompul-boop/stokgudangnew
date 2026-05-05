@@ -24,3 +24,16 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 // Contact Routes
 Route::get('/contact', [ProductController::class, 'contact'])->name('contact');
 Route::post('/contact', [ProductController::class, 'storeContact'])->name('contacts.store');
+
+// Manajer Routes
+Route::get('/manajer/dashboard', function () {
+    return view('manajer.dashboard');
+})->name('manajer.dashboard');
+
+Route::get('/manajer/laporan', function () {
+    return view('manajer.laporan');
+})->name('manajer.laporan');
+
+Route::get('/manajer/profil', function () {
+    return view('manajer.profil');
+})->name('manajer.profil');
